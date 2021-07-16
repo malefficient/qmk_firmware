@@ -186,7 +186,7 @@ void oled_task_user(void) {
 }
 
 #endif
-
+//JC: What does this do?
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_QWERTY:
@@ -359,9 +359,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     } else if (index == 1) {
         if (clockwise) {
-            tap_code(KC_PGDOWN);
+            tap_code(KC_UP);
         } else {
-            tap_code(KC_PGUP);
+            tap_code(KC_DOWN);
         }
     }
     return true;
