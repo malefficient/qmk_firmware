@@ -1,11 +1,12 @@
 #pragma once
 
+//JC: Should/Can i override these inside my own config file? changes here will affect all sofles
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFC32
 #define PRODUCT_ID      0x0287
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    JosefAdamcik
-#define PRODUCT         Sofle
+#define PRODUCT         SofleJC
 
 /* key matrix size */
 // Rows are doubled-up
@@ -30,6 +31,7 @@
 #define TAP_CODE_DELAY 10
 
 /* communication between sides */
+#define SPLIT_MODS_ENABLE
 #define USE_SERIAL
 #define SERIAL_USE_MULTI_TRANSACTION
 #define SOFT_SERIAL_PIN D2
