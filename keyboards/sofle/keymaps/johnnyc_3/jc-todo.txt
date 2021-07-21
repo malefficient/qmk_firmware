@@ -1,0 +1,5 @@
+TODO: i
+relocate +/- 
+(temporarily) disable encoders
+TODO: Figure out better way to ctrl-space-arrow key
+
