@@ -5,6 +5,7 @@
 //#undef TAPPING_TERM 
 //#define TAPPING_TERM 175
 #define TMUX_QK LCTL(KC_SPACE)
+#define LG____ LGUI(_______)
 enum sofle_layers {
     /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
     _QWERTY,
@@ -36,7 +37,6 @@ enum custom_keycodes {
 enum {
     TD_TMUX_QK,
     TD_RAISE_RAISE,
-    TD_TAB_TAB
 
 };
 
@@ -44,7 +44,6 @@ enum {
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_TMUX_QK] = ACTION_TAP_DANCE_DUAL_ROLE(LCTL(KC_SPACE), _RAISE),
     [TD_RAISE_RAISE] = ACTION_TAP_DANCE_DOUBLE(KC_RAISE, LCTL(KC_SPACE))
-    [TD_TAB_TAB] = ACTION_TAP_DANCE_DOUBLE(KC_TAB, LGUI(KC_TAB)),
 
 };
 
@@ -78,11 +77,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_QWERTY] = LAYOUT( \
-  KC_0,	KC_1,	KC_2,	KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_MINUS, \
-  TD(TD_GRV_ESC), KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC, \
-  TD(TD_TAB_TAB),   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT, \
+  GRAVE_ESC, 	KC_1,	KC_2,	KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_MINUS, \
+  KC_TILDE, KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC, \
+  KC_TAB,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT, \
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, XXXXXXX,    XXXXXXX,KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT, \
-                 KC_LCTRL,KC_LGUI,KC_LALT, KC_LOWER, KC_ENT,      KC_SPC,  TD(TD_RAISE_RAISE), KC_RGUI, KC_RCTL, KC_RCTL \
+                 KC_LCTRL,KC_LGUI,KC_LALT, KC_LOWER, KC_ENT,      KC_SPC,  KC_RAISE, KC_RGUI, KC_RCTL, KC_RCTL \
 ),
 /*
  * COLEMAK
@@ -149,12 +148,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            | LGUI | LAlt | LCTR |LOWER | /Enter  /       \Space \  |RAISE | RCTR | RAlt | RGUI |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
+ *
  */
+
+//JC: ROSO, trouvlwhoot why i cant use RAISE-A f.ex as LGUI(A) etc
 [_RAISE] = LAYOUT( \
-  _______, _______, _______ , _______ , _______ , _______,                           _______,  _______, _______,  _______ ,  KC_EQUAL, KC_MINUS, \
-  KC_ESC,  RGUI(_______), _______,  _______,  _______,  _______,                    KC_PGUP, _______,   KC_UP, TD(TD_TMUX_QK), _______, LSFT(KC_PIPE), \
-  KC_TAB,  RGUI(_______), _______, _______,  _______, _______,                      KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT,  _______, _______, \
-  _______,KC_UNDO, KC_CUT, KC_COPY, KC_PASTE, RGUI(KC_B),  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,  KC_UP , _______, \
+  LG____, LG____, _______ , _______ , _______ , _______,                           _______,  _______, _______,  _______ ,  KC_EQUAL, KC_MINUS, \
+  LG____, LG____, _______,  _______,  _______,  _______,                    KC_PGUP, _______,   KC_UP, TD(TD_TMUX_QK), _______, LSFT(KC_PIPE), \
+  LG____, LG____, _______, _______,  _______, _______,                      KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT,  _______, _______, \
+  _______,KC_UNDO, KC_CUT, LG____, KC_PASTE, RGUI(KC_B),  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,  KC_UP , _______, \
                          _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______ \
 ),
 
